@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Just a Cute Try 💌</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 25px;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+    }
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    h1 {
+      color: #ff4d6d;
+    }
+    .heart {
+      font-size: 40px;
+      animation: beat 1s infinite;
+    }
+    @keyframes beat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .line {
+      display: none;
+      margin-top: 15px;
+      font-size: 15px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #ff4d6d;
+      color: #fff;
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #e63950;
+    }
+    img {
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="heart">❤️</div>
+  <h1>Hey…</h1>
+
+  <div class="line">I can love you for 4 days — Spring, Summer, Autumn, Winter 🌸☀️🍂❄️</div>
+  <div class="line">Oh no… maybe just 3 — Yesterday, Today & Tomorrow 🙂</div>
+  <div class="line">Or maybe 2 — Day & Night 🌙</div>
+  <div class="line">Actually… one day is enough. Every day.</div>
+
+  <div class="line">
+    I love three things in this world:<br>
+    The Sun ☀️, The Moon 🌙 & You 💖<br>
+    Sun for the morning,<br>
+    Moon for the night,<br>
+    And you… forever.
+  </div>
+
+  <div class="line">
+    You have that calm smile<br>
+    jo bina reason bhi mood thik kar de 🙂
+  </div>
+
+  <div class="line">
+    ⚠️ Why I Love You?<br>
+    (Word “LOVE” trap hai 😌)<br>
+    Bas vibe achi lagti hai… aur thoda sa tum bhi.
+  </div>
+
+  <div class="line">
+    Future list (thoda sa 😄):<br>
+    – Random chai breaks ☕<br>
+    – Hasi without reason<br>
+    – Aur moments jo sirf yaad ban jaayein ✨
+  </div>
+
+  <div class="line">
+    Secret message 🤫<br>
+    Agar yahan tak padh liya…<br>
+    toh shayad tumhari smile ka reason<br>
+    thoda sa main bhi hoon 😉
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="cute couple">
+
+  <button onclick="showLine()">Next 💌</button>
+</div>
+
+<script>
+  let index = 0;
+  function showLine() {
+    const lines = document.querySelectorAll('.line');
+    if (index < lines.length) {
+      lines[index].style.display = 'block';
+      index++;
+    }
+  }
+</script>
+
+</body>
+</html>
