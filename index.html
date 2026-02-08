@@ -6,236 +6,130 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-body{
-  margin:0;
-  background:linear-gradient(135deg,#ffafbd,#ffc3a0);
-  overflow:hidden;
-}
-.screen{
-  display:none;
-  height:100vh;
-  width:100%;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:20px;
-}
-.active{display:flex;}
+* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { margin: 0; background: linear-gradient(135deg,#ffafbd,#ffc3a0); overflow: hidden; }
+.screen { display: none; height: 100vh; width: 100%; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+.active { display: flex; }
 
-.card{
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  max-width:420px;
-  width:100%;
-  box-shadow:0 15px 35px rgba(0,0,0,0.2);
-  animation:pop 0.8s ease;
-}
+.card { background: white; padding: 25px; border-radius: 20px; max-width: 420px; width: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.2); animation: pop 0.8s ease; }
 
-@keyframes pop{
-  from{transform:scale(0.8);opacity:0;}
-  to{transform:scale(1);opacity:1;}
-}
+@keyframes pop { from{transform:scale(0.8);opacity:0;} to{transform:scale(1);opacity:1;} }
 
-h2{color:#ff4d6d;}
-p{font-size:15px;line-height:1.6;}
+h2 { color: #ff4d6d; }
+p { font-size: 15px; line-height: 1.6; }
 
-button{
-  margin:10px;
-  padding:10px 22px;
-  border:none;
-  border-radius:25px;
-  background:#ff4d6d;
-  color:white;
-  font-size:14px;
-  cursor:pointer;
-}
+button { margin: 10px; padding: 10px 22px; border: none; border-radius: 25px; background: #ff4d6d; color: white; font-size: 14px; cursor: pointer; }
+button:hover { opacity: 0.9; }
 
-button:hover{opacity:0.9;}
+.animal { width: 150px; height: 150px; object-fit: contain; animation: float 2s infinite; margin-bottom: 15px; }
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
 
-.animal{
-  font-size:60px;
-  animation:float 2s infinite;
-}
+.hearts{ position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; background:url("https://i.imgur.com/6QJjYMe.png"); opacity:0.2; }
 
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-}
+.letter{ text-align:left; font-size:14px; white-space: pre-line; }
+.fade-line { opacity:0; transition: opacity 0.6s ease; margin-bottom:5px; }
 
-.hearts{
-  position:absolute;
-  top:0;left:0;
-  width:100%;height:100%;
-  pointer-events:none;
-  background:url("https://i.imgur.com/6QJjYMe.png");
-  opacity:0.2;
-}
-
-.letter{
-  text-align:left;
-  white-space:pre-line;
-  font-size:14px;
-}
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<audio autoplay loop>
+<!-- MUSIC BUTTON -->
+<div class="screen active" id="musicScreen">
+  <div class="card">
+    <h2>Tap to start 💖</h2>
+    <p>Open your letter & music will play 🎵</p>
+    <button onclick="startMusic()">Start 💌</button>
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0b4c7c7bb2.mp3" type="audio/mpeg">
 </audio>
 
 <div class="hearts"></div>
 
-<!-- SCREEN 1 -->
-<div class="screen active" id="s1">
+<!-- SCREEN 1: LETTER OPEN -->
+<div class="screen" id="s1">
   <div class="card">
-    <div class="animal">✉️</div>
+    <img src="https://i.imgur.com/Q1vnhXz.png" class="animal"> <!-- cute envelope image -->
     <h2>A small letter…</h2>
     <p>(tap to open)</p>
     <button onclick="go('s2')">Open 💌</button>
   </div>
 </div>
 
-<!-- SCREEN 2 -->
+<!-- SCREEN 2: FIRST ANIMAL QUESTION -->
 <div class="screen" id="s2">
   <div class="card">
-    <div class="animal">🐼</div>
+    <img src="https://i.imgur.com/9w7t3qU.png" class="animal"> <!-- panda sitting -->
     <h2>Can I tell you something?</h2>
     <button onclick="angry()">No</button>
     <button onclick="go('s3')">Yes</button>
   </div>
 </div>
 
-<!-- SCREEN 3 -->
+<!-- SCREEN 3: Roses + hearts -->
 <div class="screen" id="s3">
   <div class="card">
     <h2>🌹 Roses for you 🌹</h2>
-    <p>With a few stars & hearts ✨💖</p>
+    <p>With stars & hearts ✨💖</p>
     <button onclick="go('s4')">Read my letter 💌</button>
   </div>
 </div>
 
-<!-- SCREEN 4 LETTER -->
+<!-- SCREEN 4: LOVE LETTER -->
 <div class="screen" id="s4">
-  <div class="card letter">
-<h2>Just Something From My Heart 💗</h2>
-
-My Dearest Cutiepie
-From the moment you came into my life, everything changed.
-Your smile lights up my darkest days.
-Your kindness and laughter make every day brighter.
-Every second with you feels like a beautiful dream.
-This Valentine’s Day, I want you to know:
-My heart belongs to you, today, tomorrow, and forever.
-Thank you for being such a wonderful person in my life.
-Forever Yours
-(Always & Forever)
-
-<br><br>
-<button onclick="go('s5')">Next ➡️</button>
+  <div class="card letter" id="letterText">
+<h2>For My Love 💖</h2>
+<div class="fade-line">My Dearest Cutiepie</div>
+<div class="fade-line">From the moment you came into my life, everything changed.</div>
+<div class="fade-line">Your smile lights up my darkest days.</div>
+<div class="fade-line">Your kindness and laughter make every day brighter.</div>
+<div class="fade-line">Every second with you feels like a beautiful dream.</div>
+<div class="fade-line">This Valentine’s Day, I want you to know:</div>
+<div class="fade-line">My heart belongs to you, today, tomorrow, and forever.</div>
+<div class="fade-line">Thank you for being such a wonderful person in my life.</div>
+<div class="fade-line">Forever Yours</div>
+<div class="fade-line">(Always & Forever)</div>
+<br>
+<button onclick="revealLetterLines()">Next ➡️</button>
   </div>
 </div>
 
-<!-- SCREEN 5 ANIMAL LOOP 1 -->
+<!-- MULTIPLE ANIMAL TEXT REVEAL -->
 <div class="screen" id="s5">
   <div class="card">
-    <div class="animal">🐯</div>
-    <p>
-I don’t know if this is the right way to say it,
-but these words felt honest…
-    </p>
-    <button onclick="go('s6')">Next 🐾</button>
-  </div>
-</div>
-
-<!-- SCREEN 6 ANIMAL LOOP 2 -->
-<div class="screen" id="s6">
-  <div class="card">
-    <div class="animal">🦁</div>
-    <p>
-I can love you for 4 days
-Springs
-Summer
-Autumn
-Winter
-    </p>
-    <button onclick="go('s7')">Next 🐾</button>
-  </div>
-</div>
-
-<!-- SCREEN 7 ANIMAL LOOP 3 -->
-<div class="screen" id="s7">
-  <div class="card">
-    <div class="animal">🐰</div>
-    <p>
-Oh no
-May bii 3 days
-Yesterday
-Today
-And tomorrow
-    </p>
-    <button onclick="go('s8')">Next 🐾</button>
-  </div>
-</div>
-
-<!-- SCREEN 8 ANIMAL LOOP 4 -->
-<div class="screen" id="s8">
-  <div class="card">
-    <div class="animal">🐶</div>
-    <p>
-How about 2 days
-Day
-And night
-    </p>
-    <button onclick="go('s9')">Next 🐾</button>
-  </div>
-</div>
-
-<!-- SCREEN 9 ANIMAL LOOP 5 -->
-<div class="screen" id="s9">
-  <div class="card">
-    <div class="animal">🐻</div>
-    <p>
-May be one day is enough
-Everyday
-    </p>
-    <button onclick="go('s10')">Next 🐾</button>
-  </div>
-</div>
-
-<!-- SCREEN 10 ANIMAL LOOP 6 -->
-<div class="screen" id="s10">
-  <div class="card">
-    <div class="animal">🦊</div>
-    <p>
-If one day you ask me how much I like you
-My answer is
-I love three things in the world
-The sun
-The moon
-And you
-The sun for the morning
-The moon for the night
-And you forever
-    </p>
-    <button onclick="go('s8end')">Continue 💫</button>
-  </div>
-</div>
-
-<!-- SCREEN 11 FINAL THANK YOU -->
-<div class="screen" id="s8end">
-  <div class="card">
-    <div class="animal">🐼</div>
-    <h2>Thank you ❤️</h2>
-    <p>for reading till the end</p>
-    <p>(some things are better felt than kept)</p>
+    <img src="https://i.imgur.com/9w7t3qU.png" class="animal"> <!-- panda again -->
+    <div id="multiText">
+      <div class="fade-line">I don’t know if this is the right way to say it,</div>
+      <div class="fade-line">but these words felt honest…</div>
+      <div class="fade-line">I can love you for 4 days</div>
+      <div class="fade-line">Springs</div>
+      <div class="fade-line">Summer</div>
+      <div class="fade-line">Autumn</div>
+      <div class="fade-line">Winter</div>
+      <div class="fade-line">Oh no</div>
+      <div class="fade-line">May bii 3 days</div>
+      <div class="fade-line">Yesterday</div>
+      <div class="fade-line">Today</div>
+      <div class="fade-line">And tomorrow</div>
+      <div class="fade-line">How about 2 days</div>
+      <div class="fade-line">Day</div>
+      <div class="fade-line">And night</div>
+      <div class="fade-line">May be one day is enough</div>
+      <div class="fade-line">Everyday</div>
+      <div class="fade-line">If one day you ask me how much I like you</div>
+      <div class="fade-line">My answer is</div>
+      <div class="fade-line">I love three things in the world</div>
+      <div class="fade-line">The sun</div>
+      <div class="fade-line">The moon</div>
+      <div class="fade-line">And you</div>
+      <div class="fade-line">The sun for the morning</div>
+      <div class="fade-line">The moon for the night</div>
+      <div class="fade-line">And you forever</div>
+    </div>
+    <button onclick="revealMultiLines()">Next 🐾</button>
   </div>
 </div>
 
@@ -245,10 +139,41 @@ function go(id){
   document.getElementById(id).classList.add('active');
 }
 
-function angry(){
-  alert("🐼 How dare you!");
+// Angry alert
+function angry(){ alert("🐼 How dare you!"); }
+
+// MUSIC
+function startMusic(){
+  document.getElementById('bgMusic').play();
+  go('s1');
+}
+
+// LETTER LINE-BY-LINE ANIMATION
+let letterIndex = 0;
+function revealLetterLines(){
+  const lines = document.querySelectorAll('#letterText .fade-line');
+  if(letterIndex < lines.length){
+    lines[letterIndex].style.opacity = 1;
+    letterIndex++;
+    setTimeout(revealLetterLines, 600);
+  } else {
+    go('s5');
+  }
+}
+
+// MULTIPLE ANIMAL LINE-BY-LINE
+let multiIndex = 0;
+function revealMultiLines(){
+  const lines = document.querySelectorAll('#multiText .fade-line');
+  if(multiIndex < lines.length){
+    lines[multiIndex].style.opacity = 1;
+    multiIndex++;
+    setTimeout(revealMultiLines, 400);
+  } else {
+    alert("❤️ End of letters! Next part will continue...");
+  }
 }
 </script>
 
 </body>
-      </html>
+    </html>
