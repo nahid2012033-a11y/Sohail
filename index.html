@@ -8,188 +8,230 @@
 body{
   margin:0;
   font-family:'Comic Sans MS', cursive;
-  background:linear-gradient(135deg,#ffccd5,#ffe6eb);
+  background:linear-gradient(135deg,#ffb6c1,#ffe4e1);
   text-align:center;
   overflow-x:hidden;
 }
-.screen{
-  display:none;
-  min-height:100vh;
-  padding:40px 20px;
-}
+.screen{display:none;min-height:100vh;padding:40px 20px;}
 .active{display:block;}
 
 .card{
-  background:#fff;
+  background:white;
   max-width:520px;
   margin:30px auto;
   padding:25px;
   border-radius:25px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.15);
-  animation:pop 0.6s ease;
+  box-shadow:0 15px 30px rgba(0,0,0,.15);
+  animation:pop .5s ease;
 }
 @keyframes pop{
-  from{transform:scale(0.8);opacity:0}
+  from{transform:scale(.8);opacity:0}
   to{transform:scale(1);opacity:1}
 }
 
 .animal{
   font-size:90px;
-  animation:bounce 1.6s infinite;
+  animation:bounce 1.4s infinite;
 }
 @keyframes bounce{
-  0%,100%{transform:translateY(0)}
   50%{transform:translateY(-12px)}
 }
 
 button{
-  padding:12px 26px;
+  padding:12px 28px;
   border:none;
   border-radius:30px;
   font-size:16px;
   margin:10px;
   cursor:pointer;
 }
-.yes{background:#ff4d88;color:white;}
-.no{background:#ddd;}
+.yes{background:#ff4d88;color:white}
+.no{background:#ffd6e7}
 
-.hearts{
+.hearts span{
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  pointer-events:none;
-}
-.heart{
-  position:absolute;
-  font-size:20px;
-  animation:float 5s linear infinite;
-  opacity:0.7;
+  bottom:-20px;
+  font-size:18px;
+  animation:float 6s linear infinite;
+  opacity:.7;
 }
 @keyframes float{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
+  from{transform:translateY(0)}
+  to{transform:translateY(-120vh)}
+}
+
+/* popup */
+#popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  z-index:999;
+}
+#popupBox{
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  max-width:320px;
+  margin:40vh auto;
+  padding:22px;
+  border-radius:30px;
+  color:white;
+  animation:pop .4s ease;
+}
+
+.tear{
+  animation:tear 1.4s forwards;
+}
+@keyframes tear{
+  to{transform:scale(0) rotate(25deg);opacity:0}
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
 <audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_80a06b46f4.mp3" type="audio/mpeg">
+<source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_80a06b46f4.mp3">
 </audio>
 
 <div class="hearts" id="hearts"></div>
 
-<!-- SCREEN 1 -->
+<!-- POPUP -->
+<div id="popup">
+  <div id="popupBox">
+    <div style="font-size:60px">🐼😭</div>
+    <p id="popupText"></p>
+    <button onclick="closePopup()" style="
+      background:white;color:#ff4d88;
+      border:none;padding:8px 20px;
+      border-radius:20px;font-weight:bold;">
+      Okay 🥺
+    </button>
+  </div>
+</div>
+
+<!-- SCREENS -->
+
 <div class="screen active" id="s1">
-  <div class="card">
-    <div class="animal">💌</div>
-    <h2>Ek choti si baat hai…</h2>
-    <button class="yes" onclick="go(2)">Open Letter 💖</button>
-  </div>
+<div class="card">
+<div class="animal">💌</div>
+<h2>Ek choti si baat hai…</h2>
+<button class="yes" onclick="go(2)">Open 💖</button>
+</div>
 </div>
 
-<!-- SCREEN 2 -->
 <div class="screen" id="s2">
-  <div class="card">
-    <div class="animal">🐼</div>
-    <h2>Can I tell you something? 🫣</h2>
-    <button class="yes" onclick="go(3)">Yes 💕</button>
-    <button class="no" onclick="alert('How dare you 😤 dobara socho!')">No 😶</button>
-  </div>
+<div class="card">
+<div class="animal">🐼</div>
+<h3>Can I tell you something?</h3>
+<button class="yes" onclick="go(3)">Yes 💕</button>
+<button class="no" onclick="showPopup('How dare you 😤 wapas yes karo!')">No</button>
+</div>
 </div>
 
-<!-- SCREEN 3 LOVE LETTER -->
 <div class="screen" id="s3">
-  <div class="card">
-    <div class="animal">🐻</div>
-    <h3>Just Some Honest Words 🌸</h3>
-    <p>
-      I don’t know if this is the right way to say it,<br>
-      but these words felt honest…<br><br>
-
-      I can love you for 4 days<br>
-      Springs · Summer · Autumn · Winter<br><br>
-
-      Oh no… maybe 3 days<br>
-      Yesterday · Today · Tomorrow<br><br>
-
-      How about 2 days<br>
-      Day and Night<br><br>
-
-      Maybe one day is enough<br>
-      Everyday
-    </p>
-    <button class="yes" onclick="go(4)">Next 💌</button>
-  </div>
+<div class="card">
+<div class="animal">🐻</div>
+<p>I don’t know if this is the right way to say it,<br>
+but these words felt honest…</p>
+<button class="yes" onclick="go(4)">Next</button>
+</div>
 </div>
 
-<!-- SCREEN 4 -->
 <div class="screen" id="s4">
-  <div class="card">
-    <div class="animal">🦁</div>
-    <p>
-      I love three things in the world<br>
-      The Sun 🌞<br>
-      The Moon 🌙<br>
-      And You 💖<br><br>
-
-      The sun for the morning<br>
-      The moon for the night<br>
-      And you… always
-    </p>
-    <button class="yes" onclick="go(5)">One Question 😳</button>
-  </div>
+<div class="card">
+<div class="animal">🐰</div>
+<p>I can love you for 4 days<br>
+Spring · Summer · Autumn · Winter</p>
+<button class="yes" onclick="go(5)">Next</button>
+</div>
 </div>
 
-<!-- SCREEN 5 -->
 <div class="screen" id="s5">
-  <div class="card">
-    <div class="animal">🦋</div>
-    <h3>Kya tum mere saath date pe chalogi? ☕🌸</h3>
-    <button class="yes" onclick="go(6)">Yes 🥹</button>
-    <button class="no" onclick="alert('Panda dukhi ho gaya 😭')">No 😐</button>
-  </div>
+<div class="card">
+<div class="animal">🦁</div>
+<p>Oh no… maybe 3 days<br>
+Yesterday · Today · Tomorrow</p>
+<button class="yes" onclick="go(6)">Next</button>
+</div>
 </div>
 
-<!-- SCREEN 6 -->
 <div class="screen" id="s6">
-  <div class="card">
-    <div class="animal">🐯</div>
-    <h2>Kya tum meri Valentine banogi? 💌</h2>
-    <button class="yes" onclick="go(7)">YES 💖</button>
-    <button class="no" onclick="alert('Gareeb dua dega 😭💔')">No 😭</button>
-  </div>
+<div class="card">
+<div class="animal">🐯</div>
+<p>How about 2 days<br>
+Day and Night</p>
+<button class="yes" onclick="go(7)">Next</button>
+</div>
 </div>
 
-<!-- SCREEN 7 FINAL -->
 <div class="screen" id="s7">
-  <div class="card">
-    <div class="animal">🐼💖🐻</div>
-    <h2>Thank you 💘</h2>
-    <p>
-      Ye smile kaafi hai mere liye 😊<br>
-      Happy Valentine 💝
-    </p>
-  </div>
+<div class="card">
+<div class="animal">🦋</div>
+<p>Maybe one day is enough<br>
+Everyday</p>
+<button class="yes" onclick="go(8)">Next</button>
+</div>
+</div>
+
+<div class="screen" id="s8">
+<div class="card">
+<div class="animal">🐼</div>
+<p>
+I love three things in the world<br>
+The Sun ☀️<br>
+The Moon 🌙<br>
+And You 💖
+</p>
+<button class="yes" onclick="go(9)">Next</button>
+</div>
+</div>
+
+<div class="screen" id="s9">
+<div class="card">
+<div class="animal">🐻</div>
+<h3>Kya tum mere saath date pe chalogi? ☕🌸</h3>
+<button class="yes" onclick="go(10)">Yes</button>
+<button class="no" onclick="showPopup('Arre no mat bolo na 🥺 panda sad ho gaya')">No</button>
+</div>
+</div>
+
+<div class="screen" id="s10">
+<div class="card">
+<div class="animal">🐼</div>
+<h3>Kya tum meri Valentine banogi? 💌</h3>
+<button class="yes" onclick="destroy()">YES 💖</button>
+<button class="no" onclick="showPopup('Please yes kar do 😭 sab animals hopeful hain')">No</button>
+</div>
+</div>
+
+<div class="screen" id="s11">
+<div class="card tear">
+<div class="animal">💔📜</div>
+<h2>Letter udd gaya…</h2>
+<p>Par feelings wahi reh gayi 💖</p>
+</div>
 </div>
 
 <script>
 function go(n){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('s'+n).classList.add('active');
-  document.getElementById('music').play();
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById('s'+n).classList.add('active');
+ document.getElementById('music').play();
 }
-
-// floating hearts
+function destroy(){go(11)}
+function showPopup(msg){
+ document.getElementById("popupText").innerText = msg;
+ document.getElementById("popup").style.display = "block";
+}
+function closePopup(){
+ document.getElementById("popup").style.display = "none";
+}
 for(let i=0;i<20;i++){
-  let h=document.createElement('div');
-  h.className='heart';
-  h.innerHTML='💖';
-  h.style.left=Math.random()*100+'%';
-  h.style.animationDelay=Math.random()*5+'s';
-  document.getElementById('hearts').appendChild(h);
+ let h=document.createElement('span');
+ h.innerHTML='💖';
+ h.style.left=Math.random()*100+'%';
+ h.style.animationDelay=Math.random()*6+'s';
+ document.getElementById('hearts').appendChild(h);
 }
 </script>
 
