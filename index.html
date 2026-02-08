@@ -127,46 +127,23 @@ button:hover{opacity:0.9;}
   <div class="card letter">
 <h2>Just Something From My Heart 💗</h2>
 
-I don’t know if this is the right way to say it,
-but these words felt honest…
-
-I can love you for 4 days
-Springs
-Summer
-Autumn
-Winter
-
-Oh no
-May bii 3 days
-Yesterday
-Today
-And tomorrow
-
-How about 2 days
-Day
-And night
-
-May be one day is enough
-Everyday
-
-If one day you ask me how much I like you
-My answer is
-
-I love three things in the world
-The sun
-The moon
-And you
-
-The sun for the morning
-The moon for the night
-And you forever
+My Dearest Cutiepie
+From the moment you came into my life, everything changed.
+Your smile lights up my darkest days.
+Your kindness and laughter make every day brighter.
+Every second with you feels like a beautiful dream.
+This Valentine’s Day, I want you to know:
+My heart belongs to you, today, tomorrow, and forever.
+Thank you for being such a wonderful person in my life.
+Forever Yours
+(Always & Forever)
 
 <br><br>
 <button onclick="go('s5')">Next ➡️</button>
   </div>
 </div>
 
-<!-- SCREEN 5 ANIMAL LOOP -->
+<!-- SCREEN 5 ANIMAL LOOP 1 -->
 <div class="screen" id="s5">
   <div class="card">
     <div class="animal">🐯</div>
@@ -178,34 +155,84 @@ but these words felt honest…
   </div>
 </div>
 
-<!-- SCREEN 6 -->
+<!-- SCREEN 6 ANIMAL LOOP 2 -->
 <div class="screen" id="s6">
   <div class="card">
     <div class="animal">🦁</div>
     <p>
-I can love you for 4 days<br>
-Springs, Summer, Autumn, Winter
+I can love you for 4 days
+Springs
+Summer
+Autumn
+Winter
     </p>
     <button onclick="go('s7')">Next 🐾</button>
   </div>
 </div>
 
-<!-- SCREEN 7 -->
+<!-- SCREEN 7 ANIMAL LOOP 3 -->
 <div class="screen" id="s7">
   <div class="card">
     <div class="animal">🐰</div>
     <p>
-I love three things in the world<br>
-The sun, the moon and you
+Oh no
+May bii 3 days
+Yesterday
+Today
+And tomorrow
     </p>
-    <button onclick="go('s8')">Continue 💫</button>
+    <button onclick="go('s8')">Next 🐾</button>
   </div>
 </div>
 
-<!-- SCREEN 8 FINAL THANK YOU -->
+<!-- SCREEN 8 ANIMAL LOOP 4 -->
 <div class="screen" id="s8">
   <div class="card">
     <div class="animal">🐶</div>
+    <p>
+How about 2 days
+Day
+And night
+    </p>
+    <button onclick="go('s9')">Next 🐾</button>
+  </div>
+</div>
+
+<!-- SCREEN 9 ANIMAL LOOP 5 -->
+<div class="screen" id="s9">
+  <div class="card">
+    <div class="animal">🐻</div>
+    <p>
+May be one day is enough
+Everyday
+    </p>
+    <button onclick="go('s10')">Next 🐾</button>
+  </div>
+</div>
+
+<!-- SCREEN 10 ANIMAL LOOP 6 -->
+<div class="screen" id="s10">
+  <div class="card">
+    <div class="animal">🦊</div>
+    <p>
+If one day you ask me how much I like you
+My answer is
+I love three things in the world
+The sun
+The moon
+And you
+The sun for the morning
+The moon for the night
+And you forever
+    </p>
+    <button onclick="go('s8end')">Continue 💫</button>
+  </div>
+</div>
+
+<!-- SCREEN 11 FINAL THANK YOU -->
+<div class="screen" id="s8end">
+  <div class="card">
+    <div class="animal">🐼</div>
     <h2>Thank you ❤️</h2>
     <p>for reading till the end</p>
     <p>(some things are better felt than kept)</p>
@@ -217,10 +244,11 @@ function go(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
+
 function angry(){
   alert("🐼 How dare you!");
 }
 </script>
 
 </body>
-</html>
+      </html>
