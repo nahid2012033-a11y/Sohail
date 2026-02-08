@@ -1,126 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Just a Cute Try 💌</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 25px;
-      max-width: 360px;
-      text-align: center;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-      animation: pop 1s ease;
-    }
-    @keyframes pop {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    h1 {
-      color: #ff4d6d;
-    }
-    .heart {
-      font-size: 40px;
-      animation: beat 1s infinite;
-    }
-    @keyframes beat {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-    .line {
-      display: none;
-      margin-top: 15px;
-      font-size: 15px;
-    }
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: none;
-      background: #ff4d6d;
-      color: #fff;
-      border-radius: 25px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #e63950;
-    }
-    img {
-      width: 100%;
-      border-radius: 15px;
-      margin-top: 15px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Just Something From My Heart 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+body{
+  margin:0;
+  background:linear-gradient(135deg,#ffafbd,#ffc3a0);
+  overflow:hidden;
+}
+.screen{
+  display:none;
+  height:100vh;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+.active{display:flex;}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  max-width:420px;
+  width:100%;
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+  animation:pop 0.8s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+h2{color:#ff4d6d;}
+p{font-size:15px;line-height:1.6;}
+
+button{
+  margin:10px;
+  padding:10px 22px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+}
+
+button:hover{opacity:0.9;}
+
+.animal{
+  font-size:60px;
+  animation:float 2s infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+.hearts{
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  background:url("https://i.imgur.com/6QJjYMe.png");
+  opacity:0.2;
+}
+
+.letter{
+  text-align:left;
+  white-space:pre-line;
+  font-size:14px;
+}
+</style>
 </head>
+
 <body>
 
-<div class="card">
-  <div class="heart">❤️</div>
-  <h1>Hey…</h1>
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0b4c7c7bb2.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="line">I can love you for 4 days — Spring, Summer, Autumn, Winter 🌸☀️🍂❄️</div>
-  <div class="line">Oh no… maybe just 3 — Yesterday, Today & Tomorrow 🙂</div>
-  <div class="line">Or maybe 2 — Day & Night 🌙</div>
-  <div class="line">Actually… one day is enough. Every day.</div>
+<div class="hearts"></div>
 
-  <div class="line">
-    I love three things in this world:<br>
-    The Sun ☀️, The Moon 🌙 & You 💖<br>
-    Sun for the morning,<br>
-    Moon for the night,<br>
-    And you… forever.
+<!-- SCREEN 1 -->
+<div class="screen active" id="s1">
+  <div class="card">
+    <div class="animal">✉️</div>
+    <h2>A small letter…</h2>
+    <p>(tap to open)</p>
+    <button onclick="go('s2')">Open 💌</button>
   </div>
+</div>
 
-  <div class="line">
-    You have that calm smile<br>
-    jo bina reason bhi mood thik kar de 🙂
+<!-- SCREEN 2 -->
+<div class="screen" id="s2">
+  <div class="card">
+    <div class="animal">🐼</div>
+    <h2>Can I tell you something?</h2>
+    <button onclick="angry()">No</button>
+    <button onclick="go('s3')">Yes</button>
   </div>
+</div>
 
-  <div class="line">
-    ⚠️ Why I Love You?<br>
-    (Word “LOVE” trap hai 😌)<br>
-    Bas vibe achi lagti hai… aur thoda sa tum bhi.
+<!-- SCREEN 3 -->
+<div class="screen" id="s3">
+  <div class="card">
+    <h2>🌹 Roses for you 🌹</h2>
+    <p>With a few stars & hearts ✨💖</p>
+    <button onclick="go('s4')">Read my letter 💌</button>
   </div>
+</div>
 
-  <div class="line">
-    Future list (thoda sa 😄):<br>
-    – Random chai breaks ☕<br>
-    – Hasi without reason<br>
-    – Aur moments jo sirf yaad ban jaayein ✨
+<!-- SCREEN 4 LETTER -->
+<div class="screen" id="s4">
+  <div class="card letter">
+<h2>Just Something From My Heart 💗</h2>
+
+I don’t know if this is the right way to say it,
+but these words felt honest…
+
+I can love you for 4 days
+Springs
+Summer
+Autumn
+Winter
+
+Oh no
+May bii 3 days
+Yesterday
+Today
+And tomorrow
+
+How about 2 days
+Day
+And night
+
+May be one day is enough
+Everyday
+
+If one day you ask me how much I like you
+My answer is
+
+I love three things in the world
+The sun
+The moon
+And you
+
+The sun for the morning
+The moon for the night
+And you forever
+
+<br><br>
+<button onclick="go('s5')">Next ➡️</button>
   </div>
+</div>
 
-  <div class="line">
-    Secret message 🤫<br>
-    Agar yahan tak padh liya…<br>
-    toh shayad tumhari smile ka reason<br>
-    thoda sa main bhi hoon 😉
+<!-- SCREEN 5 ANIMAL LOOP -->
+<div class="screen" id="s5">
+  <div class="card">
+    <div class="animal">🐯</div>
+    <p>
+I don’t know if this is the right way to say it,
+but these words felt honest…
+    </p>
+    <button onclick="go('s6')">Next 🐾</button>
   </div>
+</div>
 
-  <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="cute couple">
+<!-- SCREEN 6 -->
+<div class="screen" id="s6">
+  <div class="card">
+    <div class="animal">🦁</div>
+    <p>
+I can love you for 4 days<br>
+Springs, Summer, Autumn, Winter
+    </p>
+    <button onclick="go('s7')">Next 🐾</button>
+  </div>
+</div>
 
-  <button onclick="showLine()">Next 💌</button>
+<!-- SCREEN 7 -->
+<div class="screen" id="s7">
+  <div class="card">
+    <div class="animal">🐰</div>
+    <p>
+I love three things in the world<br>
+The sun, the moon and you
+    </p>
+    <button onclick="go('s8')">Continue 💫</button>
+  </div>
+</div>
+
+<!-- SCREEN 8 FINAL THANK YOU -->
+<div class="screen" id="s8">
+  <div class="card">
+    <div class="animal">🐶</div>
+    <h2>Thank you ❤️</h2>
+    <p>for reading till the end</p>
+    <p>(some things are better felt than kept)</p>
+  </div>
 </div>
 
 <script>
-  let index = 0;
-  function showLine() {
-    const lines = document.querySelectorAll('.line');
-    if (index < lines.length) {
-      lines[index].style.display = 'block';
-      index++;
-    }
-  }
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function angry(){
+  alert("🐼 How dare you!");
+}
 </script>
 
 </body>
